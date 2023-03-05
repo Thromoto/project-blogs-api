@@ -4,7 +4,7 @@ const CategoryModel = (sequelize, DataTypes) => {
       name: DataTypes.STRING,
     }, { underscore: true });
   
-    return User;
+    return Category;
   };
   
 module.exports = CategoryModel;
