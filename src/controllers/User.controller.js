@@ -1,15 +1,15 @@
 require('dotenv/config');
-const jwt = require('jsonwebtoken');
 const userService = require('../services/User.service');
+const { createToken } = require('../auth/authJWT');
 
-const secret = process.env.JWT_SECRET;
-
-const jwtConfig = {
-    algorithm: 'HS256',
-    expiresIn: '30min',
-  };
-
-const createToken = (email) => jwt.sign({ email }, secret, jwtConfig);
+const getAllUsers = async (_req, res) => {
+    try {
+        const users = await userService.getAllUsers();
+        return res.status(200).json(users);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};
 
 const createUser = async (req, res) => {
     try {
@@ -33,5 +33,6 @@ const createUser = async (req, res) => {
 };
 
 module.exports = {
+    getAllUsers,
     createUser,
 };
