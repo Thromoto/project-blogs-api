@@ -6,7 +6,7 @@ const CategoryModel = (sequelize, DataTypes) => {
         autoIncrement: true,
       },
       name: DataTypes.STRING,
-    }, { underscore: true });
+    }, { underscored: true });
   
     return Category;
   };

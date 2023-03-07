@@ -3,15 +3,14 @@ module.exports = (sequelize, DataTypes) => {
       id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
-        autoIncrement: true,
       },
-      display_name: DataTypes.STRING,
+      displayName: DataTypes.STRING,
       email: DataTypes.STRING,
       password: DataTypes.STRING,
       image: DataTypes.STRING,
     }, 
     { 
-      underscore: true,
+      underscored: true,
       timestamps: false,
     });
 
@@ -19,7 +18,7 @@ module.exports = (sequelize, DataTypes) => {
       User.hasMany(models.BlogPost, {
         foreignKey: 'user_id', as: 'blogPosts'
       });
-    }
+    };
   
     return User;
   };
