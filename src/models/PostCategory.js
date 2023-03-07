@@ -1,7 +1,7 @@
 const PostCategoryModel = (sequelize, DataTypes) => {
     const PostCategory = sequelize.define('PostCategory', {
-      post_id: { type: DataTypes.INTEGER, forreignKey: true },
-      category_id:{ type: DataTypes.INTEGER, forreignKey: true },
+      post_id: { type: DataTypes.INTEGER, foreignKey: true },
+      category_id:{ type: DataTypes.INTEGER, foreignKey: true },
     }, { underscore: true });
 
     PostCategory.associate = (models) => {
