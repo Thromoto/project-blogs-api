@@ -1,7 +1,10 @@
 const { User } = require('../models');
 
-const getById = async (userId) => {
-    const user = await User.findByPk(userId);
+const getById = async (id) => {
+    const user = await User.findOne({
+        where: { id },
+        attributes: { exclude: ['password'] },
+      });
     return user;
 };
 

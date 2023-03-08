@@ -2,6 +2,19 @@ require('dotenv/config');
 const userService = require('../services/User.service');
 const { createToken } = require('../auth/authJWT');
 
+const getById = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const user = await userService.getById(id);
+
+        if (!user) return res.status(404).json({ message: 'User does not exist' });
+
+        return res.status(200).json(user);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};
+
 const getAllUsers = async (_req, res) => {
     try {
         const users = await userService.getAllUsers();
@@ -33,6 +46,7 @@ const createUser = async (req, res) => {
 };
 
 module.exports = {
+    getById,
     getAllUsers,
     createUser,
 };
